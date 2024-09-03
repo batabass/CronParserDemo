@@ -1,0 +1,37 @@
+#Cron parser demo
+
+#Cron Parser Demo is a Java-based application designed to parse cron expressions and output the individual components such as minute, hour, day of the month, etc.
+
+#We only consider the standard cron format with five time fields (minute, hour, day of month, month, and day of week) plus a command. The input will be on a single line. The cron string is passed as a single argument to the application.
+
+~$ your-program "*/15 0 1,15 * 1-5 /usr/bin/find"
+
+#Limitations
+
+This does not handle the special time strings such as "@yearly"
+This Does not handle the ABBREV based Month and Weekday Names. Does not handle operators lile '?' and 'L'
+
+
+#Instructions to run the program
+
+-Navigate to the project Folder.
+- Run Command : ./parser.sh "command"
+    eg: ./parser.sh "*/15 0 1,15 * 1-5 /usr/bin/find"
+    
+    Yields the following output:
+
+minute        0 15 30 45
+hour          0
+day of month  1 15
+month         1 2 3 4 5 6 7 8 9 10 11 12
+day of week   1 2 3 4 5
+command       /usr/bin/find
+
+- The bash Script does the following
+    - Install dependencies (mvn clean install)
+    - Compiles the project (mvn compile)
+    - Calls the main Parser class with the required command
+
+#Tests
+
+There are tests for Valid and Invalid Cron expressions in /test/ folder
